@@ -4,6 +4,10 @@ Android Developer Fundamentals (Version 2)
 This repository contains samples, starter code, and solutions for
 [Version 2 of the Android Developer Fundamentals course](https://google-developer-training.github.io/android-developer-fundamentals-course-concepts-v2/) (August 2018).
 
+These exercises are done with -
+- Android Studio 3.4; gradle plugin 3.4.1, 
+- Android 9 (SDK Version 28)
+
 Introduction
 ------------
 

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Dialog For Alert</string>
+    <string name="message">Hello World! Tap to test the alert:</string>
+</resources>
