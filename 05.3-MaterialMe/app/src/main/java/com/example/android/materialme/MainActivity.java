@@ -30,10 +30,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /*
- * https://codelabs.developers.google.com/codelabs/android-training-adaptive-layout
- *
- * use alternate resources xml to change the appearance of UI
- */
+https://codelabs.developers.google.com/codelabs/android-training-adaptive-layouts/index.html
+    use alternate resources xml to change the appearance of UI
+    summaries:
+     - cardView in recyclerView
+     - drag-n-drap, swipe in cardView, needed ItemTouchHelper to do that.
+     - onclick event of ViewHolder sends the content detail of a cardView with intent
+           to another Activity
+     - how to use drawable resource in cardView
+     - resource qualifiers which providing alternative resources for changing of app
+           appearance (e.g landscape/portrait/tablet), demos using GridLayoutManager here,
+               values/integers.xml variant resource file for specifying grid column
+                        respect to screen size
+               values/styles.xml variants for different screen size on view styles
+               values/strings.xml for different text respect to language locales
+
+*/
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     // Member variables.
