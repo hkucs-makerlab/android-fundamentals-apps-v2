@@ -40,15 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
-        //
-        mWordList = new LinkedList<String>();
-        for (int i = 0; i < 30; i++) {
-            mWordList.addLast("Word " + i);
-        }
+
         // Get a handle to the RecyclerView.
         mRecyclerView = findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new WordListAdapter(this, mWordList);
+        mAdapter = new WordListAdapter(this);
+        mWordList=mAdapter.getData();
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.
@@ -71,11 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_reset) {
-            mWordList.clear();
-            for (int i = 0; i < 30; i++) {
-                mWordList.addLast("Word " + i);
-            }
-            mRecyclerView.getAdapter().notifyDataSetChanged();
+            mAdapter.clearData();
             return true;
         }
 
@@ -85,11 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.fab) {
-            int wordListSize = mWordList.size();
-            // Add a new word to the wordList.
-            mWordList.addLast("+ Word " + wordListSize);
-            // Notify the adapter, that the data has changed.
-            mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
+            int wordListSize=mAdapter.addData();
             // Scroll to the bottom.
             mRecyclerView.smoothScrollToPosition(wordListSize);
             Snackbar.make(view, "a word added", Snackbar.LENGTH_LONG)

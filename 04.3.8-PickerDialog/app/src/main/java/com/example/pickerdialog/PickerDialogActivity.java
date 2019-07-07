@@ -1,4 +1,4 @@
-package com.example.pickerfordate;
+package com.example.pickerdialog;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -13,11 +13,13 @@ import java.util.Calendar;
 /*
 
 https://codelabs.developers.google.com/codelabs/android-training-menus-and-pickers/#7
-example to use time/date picker dialog, differently this code not using DialogFragment
+example to use time/date picker dialog, differently of this code is not using DialogFragment
 
  */
 public class PickerDialogActivity extends AppCompatActivity implements
-        View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
+        View.OnClickListener,
+        DatePickerDialog.OnDateSetListener,
+        TimePickerDialog.OnTimeSetListener
 {
 
     DatePickerDialog datePickerDialog;

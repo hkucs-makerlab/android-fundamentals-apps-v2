@@ -8,9 +8,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 /*
+
 https://codelabs.developers.google.com/codelabs/android-training-menus-and-pickers/#7
-example to use date picker dialog with DialogFragment
- */
+    - example to use date picker dialog with DialogFragment
+*/
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.button_date) {
+            // create date fragment
             DialogFragment newFragment = new DatePickerFragment();
+            //
             newFragment.show(getSupportFragmentManager(),"datePicker");
         }
     }

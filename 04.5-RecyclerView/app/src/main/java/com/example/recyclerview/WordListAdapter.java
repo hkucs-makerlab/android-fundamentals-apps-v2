@@ -14,8 +14,12 @@ public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder> {
     private LinkedList<String> mWordList;
     private LayoutInflater mInflater;
 
-    public WordListAdapter(Context activity,  LinkedList<String> wordList) {
-        mWordList=wordList;
+    public WordListAdapter(Context activity) {
+        //
+        mWordList = new LinkedList<String>();
+        for (int i = 0; i < 30; i++) {
+            mWordList.addLast("Word " + i);
+        };
         mInflater = LayoutInflater.from(activity);
 
     }
@@ -43,10 +47,24 @@ public class WordListAdapter extends RecyclerView.Adapter<WordViewHolder> {
         wordViewHolder.wordItemView.setText(data);
         Log.e("WordListAdapter","onBindViewHolder - "+String.valueOf(position));
     }
+    public void clearData() {
+        mWordList.clear();
+        for (int i = 0; i < 30; i++) {
+            mWordList.addLast("Word " + i);
+        }
+       notifyDataSetChanged();
+    }
 
+    public int addData() {
+        int wordListSize = mWordList.size();
+        // Add a new word to the wordList.
+        mWordList.addLast("+ Word " + wordListSize);
+        // Notify the adapter, that the data has changed.
+        notifyItemInserted(wordListSize);
+        return wordListSize+1;
+    }
 
     public  LinkedList<String> getData() {
-
         return mWordList;
     }
 }
