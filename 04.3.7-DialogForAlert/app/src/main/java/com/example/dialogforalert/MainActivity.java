@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements
         myAlertBuilder.setTitle("Alert");
         myAlertBuilder.setMessage("Click OK to continue, or Cancel to stop:");
         myAlertBuilder.setPositiveButton("OK", this);
+        //cancel can be optional
         myAlertBuilder.setNegativeButton("Cancel", this);
         alertDialog = myAlertBuilder.create();
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements
         alertDialog.show();
     }
 
+    // positive/negative button listener of alert dialog
     @Override
     public void onClick(DialogInterface dialog, int which) {
         if (this.alertDialog == dialog) {
