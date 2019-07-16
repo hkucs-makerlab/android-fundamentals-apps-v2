@@ -1,11 +1,16 @@
 package com.example.droidcafe;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -14,7 +19,8 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class OrderActivity extends AppCompatActivity implements View.OnClickListener,
-        AdapterView.OnItemSelectedListener {
+        AdapterView.OnItemSelectedListener,
+        TextView.OnEditorActionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         Spinner spinner = findViewById(R.id.label_spinner);
         if (spinner != null) {
             spinner.setOnItemSelectedListener(this);
-            /* below can be done in layout editor */
+            /* below can be done in visual layout editor */
             // Create ArrayAdapter using the string array and default spinner layout.
 //            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 //                    R.array.spinner_labels_array, android.R.layout.simple_spinner_item);
@@ -47,6 +53,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             // Apply the adapter to the spinner.
          //   spinner.setAdapter(adapter);
         }
+        EditText phoneText=findViewById(R.id.phone_text);
+        phoneText.setOnEditorActionListener(this);
     }
 
     public void displayToast(String message) {
@@ -80,7 +88,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
+    // spinner event listeners
     @Override
     public void onItemSelected(AdapterView<?> spinner, View view, int position, long id) {
         String spinnerLabel = spinner.getItemAtPosition(position).toString();
@@ -94,5 +102,40 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    //EditText event listener to imeOptions attribute
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        boolean handled = false;
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+            dialNumber();
+            handled = true;
+        }
+        return handled;
+    }
+
+    // use implicit intent to start phone calling activity
+    private void dialNumber() {
+        // Find the editText_main view.
+        EditText editText = findViewById(R.id.phone_text);
+        String phoneNum = null;
+        // If the editText field is not null,
+        // concatenate "tel: " with the phone number string.
+        if (editText != null) phoneNum = "tel:" +
+                editText.getText().toString();
+        // Optional: Log the concatenated phone number for dialing.
+        Log.d("dialNumber():", "dialNumber: " + phoneNum);
+        // Specify the intent.
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        // Set the data for the intent as the phone number.
+        intent.setData(Uri.parse(phoneNum));
+        // If the intent resolves to a package (app),
+        // start the activity with the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Log.d("ImplicitIntents", "Can't handle this!");
+        }
     }
 }
