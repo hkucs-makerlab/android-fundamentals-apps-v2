@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId()==R.id.button_date) {
             // create date fragment
-            DialogFragment newFragment = new DatePickerFragment();
+            DialogFragment datePickerFragment = new DatePickerFragment();
             //
-            newFragment.show(getSupportFragmentManager(),"datePicker");
+            datePickerFragment.show(getSupportFragmentManager(),"datePicker");
         }
     }
 
