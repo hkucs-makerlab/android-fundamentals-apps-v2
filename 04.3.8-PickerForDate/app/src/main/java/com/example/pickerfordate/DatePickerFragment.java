@@ -12,11 +12,12 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 /**
- * example to create dialog fragment
+ * example to create dialog fragment to encapsulate DatePickerDialog in the context of activity
  */
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
+    // create the dialog
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker.
@@ -26,7 +27,9 @@ public class DatePickerFragment extends DialogFragment
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it.
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(),
+                this, //listener for DatePickerDialog.OnDateSetListener
+                year, month, day);
     }
 
     // DatePickerDialog event listener

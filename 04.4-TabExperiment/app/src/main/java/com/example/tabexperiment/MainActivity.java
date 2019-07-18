@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     }
 
+    // tab selection listeners for the tab layout
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         // calls viewPage to switch context/views

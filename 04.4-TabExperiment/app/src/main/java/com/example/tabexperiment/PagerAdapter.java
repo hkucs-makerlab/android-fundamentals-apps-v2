@@ -12,6 +12,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         this.mNumOfTabs = NumOfTabs;
     }
 
+    // is called when viewPager.setCurrentItem()
     @Override
     public Fragment getItem(int position) {
         switch (position) {
