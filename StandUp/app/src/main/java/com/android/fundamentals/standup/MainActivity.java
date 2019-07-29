@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Set up the Notification Broadcast Intent.
         Intent notifyIntent = new Intent(this, AlarmReceiver.class);
 
-        boolean alarmUp = (PendingIntent.getBroadcast(this, NOTIFICATION_ID,
-                notifyIntent, PendingIntent.FLAG_NO_CREATE) != null);
+        boolean alarmUp = (PendingIntent.getBroadcast(this, NOTIFICATION_ID,notifyIntent, PendingIntent.FLAG_NO_CREATE) != null);
         alarmToggle.setChecked(alarmUp);
 
         final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast
