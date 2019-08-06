@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/custom_button</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+</resources>
