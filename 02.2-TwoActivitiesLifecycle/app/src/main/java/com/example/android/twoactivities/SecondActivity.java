@@ -55,7 +55,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        // Log the start of the onCreate() method.
+        Log.d(LOG_TAG, "-------");
+        Log.d(LOG_TAG, "onCreate");
         // Initialize view variables.
         mReply = findViewById(R.id.editText_second);
 
@@ -85,7 +87,7 @@ public class SecondActivity extends AppCompatActivity {
         Intent replyIntent = new Intent();
         replyIntent.putExtra(EXTRA_REPLY, reply);
         setResult(RESULT_OK, replyIntent);
-        Log.d(LOG_TAG, "End SecondActivity");
+        //Log.d(LOG_TAG, "End SecondActivity");
         finish();
     }
 
