@@ -16,6 +16,7 @@
 
 package com.example.android.hellocompat;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ import java.util.Random;
  * This app demonstrates the use of the ContextCompat class, part of the
  * V4 support library.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     // Text view for Hello World.
     private TextView mHelloTextView;
 
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the color ID from the resources the compatible way.
         int colorRes = ContextCompat.getColor(this, colorResourceName);
+
 
         // Set the text color.
         mHelloTextView.setTextColor(colorRes);

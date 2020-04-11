@@ -1,0 +1,2 @@
+include ':activitySettingsExample', ':twoActivitiesExample'
+rootProject.name='Activity Examples'
