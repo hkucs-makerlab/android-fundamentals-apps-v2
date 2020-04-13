@@ -1,0 +1,2 @@
+include ':communicateWithFragment', ':staticFragmentExample', ':dynamicFragmentExample'
+rootProject.name="Fragment Examples"
