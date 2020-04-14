@@ -1,2 +1,2 @@
-include ':communicateWithFragment', ':staticFragmentExample', ':dynamicFragmentExample'
+include ':communicateWithFragment', ':staticFragmentExample', ':dynamicFragmentExample', ':songDetailFragmentExample'
 rootProject.name="Fragment Examples"
