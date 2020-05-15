@@ -13,6 +13,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        /*
+        externalNativeBuild {
+            ndkBuild {
+                arguments "NDK_APPLICATION_MK:=src/main/jni/Application.mk"
+                cFlags "-DTEST_C_FLAG1", "-DTEST_C_FLAG2"
+                cppFlags "-DTEST_CPP_FLAG2", "-DTEST_CPP_FLAG2"
+            }
+        }
+*/
     }
 
     buildTypes {
@@ -20,8 +30,50 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
 
+        debug {
+
+        }
+    }
+/*    flavorDimensions "abi","version"
+    productFlavors {
+        free {
+            dimension "version"
+        }
+        paid {
+            dimension "version"
+        }
+        arm {
+            dimension "abi"
+        }
+        mips {
+            dimension "abi"
+        }
+        x86 {
+            dimension "abi"
+        }
+    }*/
+    //ndkVersion '21.0.6113669'
+    /*    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }*/
+
+/*    tasks.withType(JavaCompile) {
+        configure(options) {
+            options.encoding = 'UTF-8'
+            options.debug = true
+            options.failOnError = true
+            options.warnings = true
+            options.compilerArgs << '-Xlint:deprecation' << '-Xlint:unchecked'
+            //println 'Compiler args: ' + options.compilerArgs
+        }
+    }*/
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-Xlint:deprecation' << '-Xlint:unchecked'
+
+    }
 }
 
 dependencies {
