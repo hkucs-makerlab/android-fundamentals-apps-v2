@@ -60,9 +60,10 @@ public class TabFragmentPager extends ViewPager {
     public void setFragmentManager(FragmentManager fm) {
         setAdapter(new Adapter(fm));
     }
-    // add TabLayoutOnPageChangeListener with associate tablayout to this viewpager
-    public void setTabLayout(TabLayout tabLayout) {
 
+    // add default TabLayoutOnPageChangeListener with associate tablayout to this viewpager swiping;
+    // will have no effect if swipeable is false
+    public void setTabLayout(TabLayout tabLayout) {
         addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 

@@ -7,6 +7,9 @@ import android.util.Log;
 
 import com.makerlab.exercise.widgets.TabFragmentPager;
 
+// example to use custom view pager TabFragmentPager for dynamic fragment display,
+//      TabFragmentPager has a attribute swipeable to enable/disable swiping,
+//      fragment to display is constructed in pager adapter TabFragmentPager.Adapter
 public class MainActivity extends AppCompatActivity implements
         TabLayout.OnTabSelectedListener {
     static private String LOG_TAG = MainActivity.class.getSimpleName();
