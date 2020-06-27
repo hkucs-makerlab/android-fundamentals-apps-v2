@@ -10,32 +10,38 @@ import android.util.Log;
 import com.makerlab.exercise.support.TabFragmentPagerAdapter;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,
-        TabLayout.OnTabSelectedListener{
+        TabLayout.OnTabSelectedListener {
     static private String LOG_TAG = MainActivity.class.getSimpleName();
+    static private boolean D = BuildConfig.DEBUG;
     ViewPager viewPager;
     TabLayout tabLayout;
-    TabLayoutOnPageChangeListener pageListener ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //
         tabLayout = findViewById(R.id.tab_layout);
-       tabLayout.addOnTabSelectedListener(this);
+        tabLayout.addOnTabSelectedListener(this); // listen to detect tab selection
         //
+        //default page listener for tab changing, not use in this example
+        //TabLayoutOnPageChangeListener pageListener = new TabLayoutOnPageChangeListener(tabLayout);
+
         viewPager = findViewById(R.id.pager);
-        pageListener = new TabLayoutOnPageChangeListener(tabLayout);
         TabFragmentPagerAdapter adapter = new TabFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(this);
-        //
+        viewPager.addOnPageChangeListener(this); //listen to detect swiping
+        //viewPager.addOnPageChangeListener(pageListener);
+
     }
 
     // TabLayout.OnTabSelectedListener
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        Log.e(LOG_TAG, "onTabSelected() :");
-        viewPager.setCurrentItem(tab.getPosition());
+        if (D) {
+            Log.e(LOG_TAG, "onTabSelected() :");
+        }
+        viewPager.setCurrentItem(tab.getPosition()); // trigger view page swiping
     }
 
     @Override
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
     //
     // ViewPager.OnPageChangeListener
     @Override
@@ -56,8 +63,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected(int i) {
-        Log.e(LOG_TAG, "onPageSelected() :" + i);
-        tabLayout.setScrollPosition(i,0,true);
+        if (D) {
+            Log.e(LOG_TAG, "onPageSelected() :" + i);
+        }
+        // triggers tab changing
+        tabLayout.setScrollPosition(i, 0, true);
 //        if (tabLayout.getSelectedTabPosition()!=i && i < tabLayout.getTabCount()) {
 //
 //        }
@@ -65,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageScrollStateChanged(int i) {
-        // Log.e(LOG_TAG,"onPageScrollStateChanged() :"+i);
+        if (D) {
+            Log.e(LOG_TAG, "onPageScrollStateChanged() :" + i);
+        }
     }
 
 }
