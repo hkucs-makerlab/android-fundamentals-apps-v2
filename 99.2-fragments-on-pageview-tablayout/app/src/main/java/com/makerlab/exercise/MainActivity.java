@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.makerlab.exercise.support.TabFragmentPagerAdapter;
 
+// example to use view pager for dynamic fragment display,
+//      fragment to display is constructed in pager adapter TabFragmentPagerAdapter
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,
         TabLayout.OnTabSelectedListener {
     static private String LOG_TAG = MainActivity.class.getSimpleName();
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addOnTabSelectedListener(this); // listen to detect tab selection
         //
-        //default page listener for tab changing, not use in this example
+        //default page swiping listener for tab changing, not use in this example
         //TabLayoutOnPageChangeListener pageListener = new TabLayoutOnPageChangeListener(tabLayout);
 
         viewPager = findViewById(R.id.pager);
