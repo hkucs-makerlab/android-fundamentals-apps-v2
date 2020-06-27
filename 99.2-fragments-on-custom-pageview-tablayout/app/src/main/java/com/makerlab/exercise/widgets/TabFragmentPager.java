@@ -1,4 +1,4 @@
-package com.makerlab.exercise.support;
+package com.makerlab.exercise.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,8 +16,10 @@ import android.view.MotionEvent;
 import com.makerlab.exercise.ui.TabFragment1;
 import com.makerlab.exercise.ui.TabFragment2;
 import com.makerlab.exercise.ui.TabFragment3;
+
 import com.makerlab.exercise.R;
 
+// custom view pager allow disable swiping.
 public class TabFragmentPager extends ViewPager {
     private boolean swipeable;
 
@@ -50,24 +52,25 @@ public class TabFragmentPager extends ViewPager {
         return this.swipeable ? super.executeKeyEvent(event) : false;
     }
 
-    public void setSwipeable(boolean enabled) {
-        this.swipeable = enabled;
+    public void setSwipeable(boolean flag) {
+        this.swipeable = flag;
     }
 
+    // add fragment adaptor
     public void setFragmentManager(FragmentManager fm) {
         setAdapter(new Adapter(fm));
     }
-
+    // add TabLayoutOnPageChangeListener with associate tablayout to this viewpager
     public void setTabLayout(TabLayout tabLayout) {
+
         addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
-
+    // implments adapter for fragments
     static public class Adapter extends FragmentStatePagerAdapter {
         final int numberOfPage=3;
         public Adapter(FragmentManager fm) {
             super(fm);
-
         }
         @Override
         public Fragment getItem(int pageIndex) {
